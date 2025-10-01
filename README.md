@@ -1,4 +1,4 @@
-# api-authentication-java-reative
+# ms-auth-service-java-reactive
 
 Authentication microservice (signup / signin) implemented in **Java Reactive (Spring WebFlux)**.  
 This service follows the Programming Manifesto and the acceptance criteria of the challenge:
