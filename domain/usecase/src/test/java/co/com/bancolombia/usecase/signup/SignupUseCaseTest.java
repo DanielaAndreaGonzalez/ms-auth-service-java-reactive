@@ -4,7 +4,6 @@ import co.com.bancolombia.model.gateways.UsersRepository;
 import co.com.bancolombia.model.shared.Password;
 import co.com.bancolombia.model.user.Email;
 import co.com.bancolombia.model.user.User;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SiginupUseCaseTest {
+public class SignupUseCaseTest {
 
     private UsersRepository users;
     private SignupUseCase useCase;
