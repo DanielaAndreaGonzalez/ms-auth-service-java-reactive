@@ -1,8 +1,6 @@
 package co.com.bancolombia.api;
 
-import co.com.bancolombia.usecase.singup.SignupUseCase;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.RequiredArgsConstructor;
+import co.com.bancolombia.usecase.signup.SignupUseCase;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;

@@ -1,14 +1,13 @@
 package co.com.bancolombia.api;
 
 import co.com.bancolombia.api.config.HttpErrorMapper;
-import co.com.bancolombia.usecase.singin.SigninUseCase;
+import co.com.bancolombia.usecase.signin.SigninUseCase;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import java.net.URI;
 import java.util.Map;
 import java.util.UUID;
 

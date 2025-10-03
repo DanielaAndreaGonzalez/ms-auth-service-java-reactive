@@ -1,4 +1,4 @@
-package co.com.bancolombia.usecase.singin;
+package co.com.bancolombia.usecase.signin;
 
 import co.com.bancolombia.model.gateways.SessionsRepository;
 import co.com.bancolombia.model.gateways.UsersRepository;

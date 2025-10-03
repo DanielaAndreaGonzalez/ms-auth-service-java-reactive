@@ -1,10 +1,9 @@
-package co.com.bancolombia.usecase.singup;
+package co.com.bancolombia.usecase.signup;
 
 import co.com.bancolombia.model.gateways.UsersRepository;
 import co.com.bancolombia.model.shared.Password;
 import co.com.bancolombia.model.user.Email;
 import co.com.bancolombia.model.user.User;
-import lombok.val;
 
 public class SignupUseCase {
 
