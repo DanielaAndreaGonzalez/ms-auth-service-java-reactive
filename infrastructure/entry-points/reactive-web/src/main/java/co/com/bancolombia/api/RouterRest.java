@@ -12,8 +12,9 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class RouterRest {
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(SignupHandler signupHandler) {
-        return route(POST("/signup"), signupHandler::signup);
+    public RouterFunction<ServerResponse> routerFunction(SignupHandler signupHandler, SigninHandler signinHandler) {
+        return route(POST("/signup"), signupHandler::signup)
+                .andRoute(POST("/signin"), signinHandler::signin);
 
     }
 }

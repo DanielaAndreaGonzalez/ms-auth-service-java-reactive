@@ -1,6 +1,7 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
+	implementation project(':sessions')
 	implementation project(':reactive-web')
 	implementation project(':in-memory-users')
     implementation project(':model')
