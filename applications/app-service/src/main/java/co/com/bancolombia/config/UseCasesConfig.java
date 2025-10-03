@@ -1,5 +1,7 @@
 package co.com.bancolombia.config;
 
+import co.com.bancolombia.model.gateways.UsersRepository;
+import co.com.bancolombia.usecase.singup.SignupUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -11,4 +13,8 @@ import org.springframework.context.annotation.FilterType;
         },
         useDefaultFilters = false)
 public class UseCasesConfig {
+
+        public SignupUseCase signupUseCase(UsersRepository usersRepository){
+                return new SignupUseCase(usersRepository);
+        }
 }

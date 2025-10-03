@@ -1,6 +1,6 @@
 package co.com.bancolombia.model.user;
 
-import co.com.bancolombia.model.user.shared.Password;
+import co.com.bancolombia.model.shared.Password;
 
 import java.util.Objects;
 import java.util.UUID;

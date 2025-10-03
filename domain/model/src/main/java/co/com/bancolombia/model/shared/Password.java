@@ -1,4 +1,4 @@
-package co.com.bancolombia.model.user.shared;
+package co.com.bancolombia.model.shared;
 
 import java.util.Objects;
 

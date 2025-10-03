@@ -14,11 +14,16 @@ public final class Email {
     Si falla, lanza IllegalArgumentException con el código de error del dominio
     (INVALID_EMAIL_FORMAT) → luego el HttpErrorMapper lo traduce a 400.
      */
-    public Email(String value){
-        if(value == null || value.isBlank() || RFC_5322.matcher(value).matches()){
+    public Email(String value) {
+        String v = (value == null) ? null : value.trim();  // <-- trim ANTES de validar
+        if (v == null || v.isBlank()) {
             throw new IllegalArgumentException("INVALID_EMAIL_FORMAT");
         }
-        this.value = value.trim();
+        if (!RFC_5322.matcher(v).matches()) {
+            System.out.println("DEBUG Email regex FAIL: [" + v + "] len=" + v.length());
+            throw new IllegalArgumentException("INVALID_EMAIL_FORMAT");
+        }
+        this.value = v;
     }
 
     public String value() {return value; }
