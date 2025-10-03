@@ -11,7 +11,7 @@ public class HttpErrorMapper {
             case "INVALID_EMAIL_FORMAT" , "WEAK_PASSWORD", "MALFORMED_REQUEST" -> HttpStatus.BAD_REQUEST; //400
             case "EMAIL_ALREADY_EXISTS"   -> HttpStatus.CONFLICT; // 409
             case "USER_NOT_FOUND"      -> HttpStatus.NOT_FOUND;     // 404
-            case "INVALID_CREDENTIALS" -> HttpStatus.UNAUTHORIZED;//401
+            case "INVALID_CREDENTIALS" -> HttpStatus.UNAUTHORIZED;
             default                       -> HttpStatus.INTERNAL_SERVER_ERROR; //500
         };
     }
