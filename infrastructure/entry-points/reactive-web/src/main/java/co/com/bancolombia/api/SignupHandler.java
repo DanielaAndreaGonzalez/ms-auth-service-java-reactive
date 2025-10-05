@@ -13,6 +13,7 @@ import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.util.UUID;
+import co.com.bancolombia.api.dto.SignupRequest;
 
 @Component
 
@@ -64,10 +65,5 @@ public class SignupHandler {
                 );
     }
 
-    //Agregar a parte como DTO ->
-    public static final class SignupRequest {
-        public String email;
-        public String password;
-    }
 
 }
