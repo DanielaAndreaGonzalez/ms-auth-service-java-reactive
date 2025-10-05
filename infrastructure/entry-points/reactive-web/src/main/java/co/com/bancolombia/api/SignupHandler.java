@@ -1,5 +1,9 @@
 package co.com.bancolombia.api;
 
+import co.com.bancolombia.model.shared.common.crq.Command;
+import co.com.bancolombia.model.shared.common.crq.ContextData;
+import co.com.bancolombia.model.shared.common.crq.XrequestId;
+import co.com.bancolombia.usecase.signup.SignupPayLoad;
 import co.com.bancolombia.usecase.signup.SignupUseCase;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -24,32 +28,42 @@ public class SignupHandler {
 
 
     public Mono<ServerResponse> signup(ServerRequest serverRequest) {
-        String xreq = serverRequest.headers().firstHeader("x-request-id");
-        final String reqId = (xreq == null || xreq.isBlank()) ? UUID.randomUUID().toString() : xreq;
-        if (xreq == null || xreq.isBlank()) xreq = UUID.randomUUID().toString();
+
+        String x = serverRequest.headers().firstHeader("x-request-id");
+        String m = serverRequest.headers().firstHeader("message-id");
+
+        final String messageId = (m == null || m.isBlank()) ? UUID.randomUUID().toString() : m;
+        final String rawXreq   = (x == null || x.isBlank()) ? messageId : x;
+
+        final ContextData ctx  = new ContextData(messageId, new XrequestId(rawXreq));
+
 
         return serverRequest.bodyToMono(SignupRequest.class)
                 .flatMap(body -> {
                     System.out.println("DEBUG signup email=" + body.email + " password=" + body.password);
-                   return  Mono.fromRunnable(() ->
-                                    useCase.execute(body.email, body.password));
+                    return Mono.fromRunnable(() -> {
+                        var payload = new SignupPayLoad(body.email, body.password);
+                        var cmd     = new Command<SignupPayLoad, ContextData>(payload, ctx);
+                        useCase.execute(cmd);
+                    });
 
                 })
                 .then(ServerResponse.created(URI.create("/signup"))
-                        .header("x-request-id", reqId)
+                        .header("x-request-id", ctx.xrequestId().value())
                         .build())
                 .onErrorResume(ex -> {
                     var status = co.com.bancolombia.api.config.HttpErrorMapper.statusFrom(ex);
                     var code = co.com.bancolombia.api.config.HttpErrorMapper.codeFrom(ex);
                     return ServerResponse.status(status)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .header("x-request-id" , reqId)
+                            .header("x-request-id" ,ctx.xrequestId().value())
                             .bodyValue(java.util.Map.of("code", code));
                         }
 
                 );
     }
 
+    //Agregar a parte como DTO ->
     public static final class SignupRequest {
         public String email;
         public String password;

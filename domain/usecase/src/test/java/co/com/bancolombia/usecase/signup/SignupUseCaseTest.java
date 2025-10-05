@@ -2,6 +2,9 @@ package co.com.bancolombia.usecase.signup;
 
 import co.com.bancolombia.model.gateways.UsersRepository;
 import co.com.bancolombia.model.shared.Password;
+import co.com.bancolombia.model.shared.common.crq.Command;
+import co.com.bancolombia.model.shared.common.crq.ContextData;
+import co.com.bancolombia.model.shared.common.crq.XrequestId;
 import co.com.bancolombia.model.user.Email;
 import co.com.bancolombia.model.user.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +30,10 @@ public class SignupUseCaseTest {
 
     @Test
     void signup_feliz() {
-        assertDoesNotThrow(() -> useCase.execute("kevin@example.com", "supersegura"));
+        var payload = new SignupPayLoad("kevin@example.com", "supersegura");
+        var context = new ContextData("msg123", XrequestId.generate());
+        var cmd = new Command<>(payload, context);
+        assertDoesNotThrow(() -> useCase.execute(cmd));
         assertTrue(users.findByEmail("kevin@example.com").isPresent());
     }
 
@@ -45,22 +51,31 @@ public class SignupUseCaseTest {
     @Test
     void signup_email_duplicado() {
         users.save(new User(new Email("kevin@example.com"), new Password("supersegura")));
+        var payload = new SignupPayLoad("kevin@example.com", "otroPass123");
+        var context = new ContextData("msg123", XrequestId.generate());
+        var cmd = new Command<>(payload, context);
         var ex = assertThrows(IllegalArgumentException.class,
-                () -> useCase.execute("kevin@example.com", "otroPass123"));
+                () -> useCase.execute(cmd));
         assertEquals("EMAIL_ALREADY_EXISTS", ex.getMessage());
     }
 
     @Test
     void signup_email_invalido() {
+        var payload = new SignupPayLoad("kevin@bad", "supersegura");
+        var context = new ContextData("msg123", XrequestId.generate());
+        var cmd = new Command<>(payload, context);
         var ex = assertThrows(IllegalArgumentException.class,
-                () -> useCase.execute("kevin@bad", "supersegura"));
+                () -> useCase.execute(cmd));
         assertEquals("INVALID_EMAIL_FORMAT", ex.getMessage());
     }
 
     @Test
     void signup_password_debil() {
+        var payload = new SignupPayLoad("kevin@example.com", "1234567");
+        var context = new ContextData("msg123", XrequestId.generate());
+        var cmd = new Command<>(payload, context);
         var ex = assertThrows(IllegalArgumentException.class,
-                () -> useCase.execute("kevin@example.com", "1234567"));
+                () -> useCase.execute(cmd));
         assertEquals("WEAK_PASSWORD", ex.getMessage());
     }
 
