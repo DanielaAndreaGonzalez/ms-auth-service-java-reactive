@@ -36,7 +36,7 @@ public class SigninHandler {
                        ServerResponse.status(HttpErrorMapper.statusFrom(ex))
                                .contentType(MediaType.APPLICATION_JSON)
                                .header("x-request-id" , reqId)
-                               .bodyValue(Map.of("code", HttpErrorMapper.codeFrom(ex)))
+                               .bodyValue(HttpErrorMapper.errorResponseFrom(ex, null, reqId))
                );
     }
 

@@ -53,11 +53,12 @@ public class SignupHandler {
                         .build())
                 .onErrorResume(ex -> {
                     var status = co.com.bancolombia.api.config.HttpErrorMapper.statusFrom(ex);
-                    var code = co.com.bancolombia.api.config.HttpErrorMapper.codeFrom(ex);
+                    var errorResponse = co.com.bancolombia.api.config.HttpErrorMapper.errorResponseFrom(
+                        ex, ctx.messageId(), ctx.xrequestId().value());
                     return ServerResponse.status(status)
                             .contentType(MediaType.APPLICATION_JSON)
                             .header("x-request-id" ,ctx.xrequestId().value())
-                            .bodyValue(java.util.Map.of("code", code));
+                            .bodyValue(errorResponse);
                         }
 
                 );
