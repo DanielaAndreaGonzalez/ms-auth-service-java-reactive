@@ -1,6 +1,3 @@
 package co.com.bancolombia.model.shared.common.crq;
 
-public class Query <P,C>{
-    private P payload;
-    private C contexData;
-}
+public record Query<P, C>(P payload, C context) {}

@@ -1,7 +1,7 @@
 package co.com.bancolombia.inmemoryusers;
 
-import co.com.bancolombia.model.gateways.UsersRepository;
-import co.com.bancolombia.model.user.User;
+import co.com.bancolombia.model.user.gateway.UsersRepository;
+import co.com.bancolombia.model.user.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

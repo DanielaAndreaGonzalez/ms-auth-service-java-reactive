@@ -1,11 +1,11 @@
 package co.com.bancolombia.usecase.signin;
 
 import co.com.bancolombia.model.gateways.SessionsRepository;
-import co.com.bancolombia.model.gateways.UsersRepository;
+import co.com.bancolombia.model.user.gateway.UsersRepository;
 import co.com.bancolombia.model.session.Session;
-import co.com.bancolombia.model.shared.Password;
-import co.com.bancolombia.model.user.Email;
-import co.com.bancolombia.model.user.User;
+import co.com.bancolombia.model.user.value.Password;
+import co.com.bancolombia.model.user.value.Email;
+import co.com.bancolombia.model.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

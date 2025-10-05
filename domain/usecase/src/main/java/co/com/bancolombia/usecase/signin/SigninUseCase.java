@@ -1,7 +1,7 @@
 package co.com.bancolombia.usecase.signin;
 
 import co.com.bancolombia.model.gateways.SessionsRepository;
-import co.com.bancolombia.model.gateways.UsersRepository;
+import co.com.bancolombia.model.user.gateway.UsersRepository;
 import co.com.bancolombia.model.session.Session;
 
 public class SigninUseCase {

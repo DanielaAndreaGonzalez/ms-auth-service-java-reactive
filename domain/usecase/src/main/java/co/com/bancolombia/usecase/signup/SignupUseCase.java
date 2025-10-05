@@ -1,11 +1,11 @@
 package co.com.bancolombia.usecase.signup;
 
-import co.com.bancolombia.model.gateways.UsersRepository;
-import co.com.bancolombia.model.shared.Password;
+import co.com.bancolombia.model.user.gateway.UsersRepository;
+import co.com.bancolombia.model.user.value.Password;
 import co.com.bancolombia.model.shared.common.crq.Command;
 import co.com.bancolombia.model.shared.common.crq.ContextData;
-import co.com.bancolombia.model.user.Email;
-import co.com.bancolombia.model.user.User;
+import co.com.bancolombia.model.user.value.Email;
+import co.com.bancolombia.model.user.model.User;
 
 public class SignupUseCase {
 
@@ -21,7 +21,6 @@ public class SignupUseCase {
 
         Email email = new Email(emailRaw);
         Password password = new Password(passwordRaw);
-
 
         users.findByEmail(email.value())
                 .ifPresent(u -> {throw new IllegalArgumentException("EMAIL_ALREADY_EXISTS");});

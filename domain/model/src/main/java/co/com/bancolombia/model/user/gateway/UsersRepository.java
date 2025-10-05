@@ -1,6 +1,6 @@
-package co.com.bancolombia.model.gateways;
+package co.com.bancolombia.model.user.gateway;
 
-import co.com.bancolombia.model.user.User;
+import co.com.bancolombia.model.user.model.User;
 
 import java.util.Optional;
 

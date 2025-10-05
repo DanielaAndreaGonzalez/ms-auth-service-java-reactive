@@ -1,12 +1,12 @@
 package co.com.bancolombia.usecase.signup;
 
-import co.com.bancolombia.model.gateways.UsersRepository;
-import co.com.bancolombia.model.shared.Password;
+import co.com.bancolombia.model.user.gateway.UsersRepository;
+import co.com.bancolombia.model.user.value.Password;
 import co.com.bancolombia.model.shared.common.crq.Command;
 import co.com.bancolombia.model.shared.common.crq.ContextData;
 import co.com.bancolombia.model.shared.common.crq.XrequestId;
-import co.com.bancolombia.model.user.Email;
-import co.com.bancolombia.model.user.User;
+import co.com.bancolombia.model.user.value.Email;
+import co.com.bancolombia.model.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
