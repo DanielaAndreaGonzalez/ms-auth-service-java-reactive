@@ -57,6 +57,9 @@ curl --location 'http://localhost:8080/signup' \
     "email": "daniela@google.com",
     "password": "supersegura"
 }'
+Answer: 
+<img width="803" height="204" alt="image" src="https://github.com/user-attachments/assets/e618cc84-28a9-4c32-a66d-416298d72e83" />
+
 
 ## cURLS: 409- Email Duplicado
 curl --location 'http://localhost:8080/signup' \
@@ -66,6 +69,9 @@ curl --location 'http://localhost:8080/signup' \
     "email": "daniela@google.com",
     "password": "supersegura"
 }'
+Answer:
+<img width="824" height="409" alt="image" src="https://github.com/user-attachments/assets/a8805c1e-f882-4a74-a633-a6560e76552f" />
+
 
 ## cURLS: Session exitosa 
 curl --location 'http://localhost:8080/signin' \
@@ -74,6 +80,9 @@ curl --location 'http://localhost:8080/signin' \
     "email": "daniela@google.com",
     "password": "supersegura"
 }'
+Answer:
+<img width="806" height="278" alt="image" src="https://github.com/user-attachments/assets/53f6e45b-fe04-4d0b-9367-4a1ca1e3ab22" />
+
 
 ## cURL: Session password incorrecta
 curl --location 'http://localhost:8080/signin' \
@@ -82,6 +91,11 @@ curl --location 'http://localhost:8080/signin' \
     "email": "daniela@google.com",
     "password": "password1"
 }'
+Answer:
+<img width="816" height="412" alt="image" src="https://github.com/user-attachments/assets/2098d34e-e5d9-4d07-be38-1f3de2416102" />
+
+
+
 
 ## cURL email no existe
 curl --location 'http://localhost:8080/signin' \
